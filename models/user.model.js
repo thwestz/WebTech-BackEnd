@@ -20,7 +20,7 @@ userSchema.plugin(uniqueValidator);
 userSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
 
 userSchema.pre('save', function(next) {
-    var user = this;
+    const user = this;
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();

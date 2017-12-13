@@ -14,8 +14,16 @@ router.get('/:id', (req, res, next) => {
   })
 })
 
+router.get('/status/member', (req, res, next) => {
+  User.find({'status' : 0},(err, users) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(users)
+  })
+})
+
 router.get('/', (req, res, next) => {
-  const id = req.params.id;
   User.find((err, users) => {
     if (err) {
       return next(err);
@@ -36,7 +44,7 @@ router.post('/', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
   const user = new User(req.body);
-  user.save(err => {
+  user.save((err,user) => {
     if (err) {
       return next(err);
     }

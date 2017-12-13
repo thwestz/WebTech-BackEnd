@@ -1,7 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const users = require('./routes/user')
+const user = require('./routes/user')
+const _event = require('./routes/event')
 const auth = require('./routes/auth')
 const app = express()
 
@@ -30,9 +31,9 @@ mongoose.connect(uri, { useMongoClient: true }, (err, db) => {
 
     app.use(bodyParser.json())
 
-    app.use('/users', users);
+    app.use('/user', user)
     app.use('/auth',auth)
-
+    app.use('/event',_event)
     const PORT = process.env.PORT || 5000
     app.listen(PORT, () => console.log(`App listening on port ${PORT}`))
 })
