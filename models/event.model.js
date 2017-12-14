@@ -14,6 +14,7 @@ const eventSchema = new Schema({
         startTime: { type: String, required: true },
         endTime: { type: String, required: true }
     }],
+    userRegistedID: { type: String},
     eLocat: { type: String, required: true },
     eCap: { type: Number, required: true },
     eMainDetail: { type: String, required: true },
