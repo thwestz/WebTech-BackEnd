@@ -10,7 +10,7 @@ const authSchema = new Schema({
     types: { type: Number, required: true },  
 
     createdAt: { type: Number, default: new Date().getTime() },
-    expiredAt: { type: Number, default: new Date().getTime() +(60 * 60 * 24) },
+    expiredAt: { type: Number, default: new Date().getTime() + (60 * 60 * 60 * 24) },
     updatedAt: { type: Number, default: new Date().getTime() },
 })
 

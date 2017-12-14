@@ -15,7 +15,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.get('/status/member', (req, res, next) => {
-  User.find({'status' : 0},(err, users) => {
+  User.find({ 'status': 0 }, (err, users) => {
     if (err) {
       return next(err);
     }
@@ -29,12 +29,12 @@ router.get('/', (req, res, next) => {
       return next(err);
     }
     res.json(users)
-  })
+  }).sort({ 'status': -1 })
 })
 
 router.post('/', (req, res, next) => {
   const user = req.body;
-  
+
   User.findByIdAndUpdate(user.id, (err, user) => {
     if (err) {
       return next(err);
@@ -45,7 +45,7 @@ router.post('/', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
   const user = new User(req.body);
-  user.save((err,user) => {
+  user.save((err, user) => {
     if (err) {
       return next(err);
     }

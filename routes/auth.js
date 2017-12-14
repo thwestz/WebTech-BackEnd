@@ -29,7 +29,7 @@ router.post('/', (req, res, next) => {
     })
 });
 
-router.get('/session/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     const id = req.params.id;
     Auth.findById( id, (err, auth) => {
         if (err) {
