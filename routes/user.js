@@ -34,6 +34,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const user = req.body;
+  
   User.findByIdAndUpdate(user.id, (err, user) => {
     if (err) {
       return next(err);
