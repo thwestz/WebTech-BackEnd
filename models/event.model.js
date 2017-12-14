@@ -7,7 +7,13 @@ const Schema = mongoose.Schema
 const eventSchema = new Schema({
     userID: { type: String, required: true, trim: true },
     eName: { type: String, required: true },
-    eDate: { type: Number, required: true },
+    eLOGO: { type: String },
+    eDate: [{
+        startDate: { type: Number, required: true },
+        endDate: { type: Number, required: true },
+        startTime: { type: String, required: true },
+        endTime: { type: String, required: true }
+    }],
     eLocat: { type: String, required: true },
     eCap: { type: Number, required: true },
     eMainDetail: { type: String, required: true },
@@ -17,7 +23,7 @@ const eventSchema = new Schema({
         value: String
     }],
     createdAt: { type: Number, default: new Date().getTime() },
-    expiredAt: { type: Number, default: new Date().getTime() + (60 * 60 * 24) },
+    expiredAt: { type: Number},
     updatedAt: { type: Number, default: new Date().getTime() },
 })
 

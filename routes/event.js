@@ -56,21 +56,12 @@ router.get('/:id', (req, res, next) => {
       res.json(_events)
     })
   })
+  
   //update
   router.put('/update', (req, res, next) => {
     const _event = new _Event(req.body);
-    console.log(_event.status)
-    console.log(_event._id)
-    _Event.findByIdAndUpdate(_event.id,{$set:{"userID": "phil",
-    "eName": _event.eName,
-    "eDate": _event.eDate,
-    "eLocat": _event.eLocat,
-    "eCap": _event.eCap,
-    "eMainDetail": _event.eMainDetail,
-    "status": _event.status,
-    "eSubDetail":_event.eSubDetail,
-    "updatedAt": { type: Number, default: new Date().getTime() }}},(err, _event) => {
-      if (err) {
+    _Event.findByIdAndUpdate( { _id : _event._id}, _event ,(err,_event) => {
+      if(err){
         return next(err);
       }
       res.json(_event)
@@ -79,7 +70,7 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/create', (req, res, next) => {
   const _event = new _Event(req.body);
-  _Event.save((err,_event) => {
+  _event.save((err,_event) => {
     if (err) {
       return next(err);
     }
