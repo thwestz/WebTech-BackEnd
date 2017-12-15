@@ -43,6 +43,16 @@ router.post('/', (req, res, next) => {
   })
 })
 
+router.put('/', (req, res, next) => {
+  const user = new User(req.body)
+  User.findByIdAndUpdate({ '_id': user._id }, user, (err, users) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(users)
+  })
+})
+
 router.post('/create', (req, res, next) => {
   const user = new User(req.body);
   user.save((err, user) => {

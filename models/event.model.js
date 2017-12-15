@@ -14,7 +14,10 @@ const eventSchema = new Schema({
         startTime: { type: String, required: true },
         endTime: { type: String, required: true }
     }],
-    userRegistedID: { type: String},
+    eSign: [{
+        uid: String,
+        status: Number
+    }],
     eLocat: { type: String, required: true },
     eCap: { type: Number, required: true },
     eMainDetail: { type: String, required: true },
@@ -24,7 +27,7 @@ const eventSchema = new Schema({
         value: String
     }],
     createdAt: { type: Number, default: new Date().getTime() },
-    expiredAt: { type: Number},
+    expiredAt: { type: Number },
     updatedAt: { type: Number, default: new Date().getTime() },
 })
 

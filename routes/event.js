@@ -54,7 +54,7 @@ router.get('/:id', (req, res, next) => {
         return next(err);
       }
       res.json(_events)
-    })
+    }).sort({ 'status': 1 })
   })
   
   //update
