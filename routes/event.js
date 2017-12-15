@@ -48,7 +48,6 @@ router.get('/:id', (req, res, next) => {
  router.get('/date/:sdate/:ndate', (req, res, next) => {
     const sdate = req.params.sdate;
     const ndate = req.params.ndate;
-    console.log(sdate,ndate)
     _Event.find({ 'createdAt': {$gte:sdate,$lte:ndate}}, (err, _event) => {
       if (err) {
         return next(err);
