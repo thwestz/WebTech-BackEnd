@@ -34,6 +34,6 @@ mongoose.connect(uri, { useMongoClient: true }, (err, db) => {
     app.use('/user', user)
     app.use('/auth',auth)
     app.use('/event',_event)
-    // const PORT = process.env.PORT || 5000
-    // app.listen(PORT, () => console.log(`App listening on port ${PORT}`))
+    const PORT = process.env.PORT || 5000
+    app.listen(PORT, () => console.log(`App listening on port ${PORT}`))
 })
