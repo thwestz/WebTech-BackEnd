@@ -1,10 +1,6 @@
 {
   "name": "backendexpress",
   "version": "1.0.0",
-  "engines" : {
-    "node" : "4.1.1",
-    "npm" : "3.10.10"
-  },
   "description": "",
   "main": "app.js",
   "scripts": {
