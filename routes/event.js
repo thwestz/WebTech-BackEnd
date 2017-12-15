@@ -34,6 +34,16 @@ router.get('/:id', (req, res, next) => {
     })
   })
 
+  router.get('/registed/:id', (req, res, next) => {
+    const id = req.params.id;
+    _Event.find({ 'eSign.uid': id}, (err, _event) => {
+      if (err) {
+        return next(err);
+      }
+      res.json(_event)
+    })
+  })
+
  //get by between date
  router.get('/date/:sdate/:ndate', (req, res, next) => {
     const sdate = req.params.sdate;

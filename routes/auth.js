@@ -11,8 +11,13 @@ router.post('/', (req, res, next) => {
         if (err) {
             return next(err);
         }
+        if(user == null){
+            return next(err);
+        }
         user.comparePassword(req.body.password, (err, isMatch) => {
-            if (err) throw err;
+            if (err) {
+                return next(err);
+            }
             if (isMatch) {
                 const auth = new Auth();
                 auth.uid = user.id; auth.fname = user.fname;
@@ -31,7 +36,7 @@ router.post('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
     const id = req.params.id;
-    Auth.findById( id, (err, auth) => {
+    Auth.findById(id, (err, auth) => {
         if (err) {
             return next(err);
         }
