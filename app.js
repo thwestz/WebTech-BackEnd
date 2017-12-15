@@ -28,7 +28,6 @@ mongoose.connect(uri, { useMongoClient: true }, (err, db) => {
         res.setHeader('Access-Control-Allow-Credentials', true)
         next()
     })
-
     app.use(bodyParser.json())
 
     app.use('/user', user)
@@ -36,4 +35,5 @@ mongoose.connect(uri, { useMongoClient: true }, (err, db) => {
     app.use('/event',_event)
     const PORT = process.env.PORT || 5000
     app.listen(PORT, () => console.log(`App listening on port ${PORT}`))
+
 })
